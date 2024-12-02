@@ -1,6 +1,6 @@
 ---
 title: "Coding R Using Quarto Markdown"
-author: "[YOUR NAME HERE]"
+author: "LiChen Dong"
 date: "`r lubridate::today()`"
 format: 
   html: 
@@ -304,53 +304,3 @@ d |> mutate(cyl = factor(cyl)) |>
         coord_cartesian(ylim = c(0, 400))
 ```
 
-
-
-# Sample Data Analysis & Markdown Annotations
-
-## Setup
-
-We follow a set of best practices to ensure that our code is maximally replicable.
-
-### Set Conflict Policies
-
-We will often use R functions created and shared by other people by loading R packages. Conflict policies are important so that we know if we load two packages with conflicting functions (i.e., different functions with same name). Using `options(conflicts.policy = "depends.ok")` at the top of your setup code chunk (i.e., before you load any packages) will produce an error if two conflicting packages are loaded. There are ways to set custom conflict policies and work around conflicts (e.g., only loading certain functions from a package).  
-
-```{r}
-options(conflicts.policy = "depends.ok")
-```
-
-
-### Load Packages
-
-You should load the **minimum** number of packages needed to execute your code. Oftentimes this may just be `tidyverse`. Loading as few packages as possible also helps reduce the likelihood of conflicts.   
-
-
-To load packages, use the `library()` function. If you have never installed the package, you will need to do that using `install.packages()` before using the package for the first time.
-
-```{r}
-library(tidyverse)
-```
-
-
-### Set Path  
-
-You will often need to read in data from files saved on your computer. By using a ***relative path*** to specify file locations, the same code can be used to read in files without causing errors when run by different users or even on different computers (especially useful for Github repo!), if the directory is structured the same way. In other words, relative paths allow for easier collaboration and code sharing!
-
-
-We can use the `getwd()` to check our current working directory, which should be the root folder where your R project file is saved. Next, we will type in the relative location of your data in reference to the root folder save it as an R object. Below, a hypothetical example of path_data is provided.
-
-```{r}
-getwd()
-path_data <- "g_e_study_2024/data"
-```
-
-### Example Setup Code Chunk
-```{r}
-#| output: false # This tells R not to print the output of this code chunk
-
-options(conflicts.policy = "depends.ok")
-library(tidyverse)
-
-path_data <- "g_e_study_2024/data"
-```
