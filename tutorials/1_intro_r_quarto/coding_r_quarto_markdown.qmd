@@ -370,6 +370,51 @@ devtools::source_url("https://raw.githubusercontent.com/jjcurtin/lab_support/ref
 ```
 
 
+### How to load a dataset
+Oftentimes you will have to load data from a dataset that is given to you. To do this you'll have to make sure the package `tidyverse` is installed. 
+```{r}
+library(tidyverse)
+Starbucks_data <- read.csv("tutorials/Starbucks.csv")
+Starbucks_data
+```
+
+### What is a Pipe
+The pipe |> helps to create more structure for the code. I think of it as after the data is called "and then" what happens.
+
+They keyboard keys to hold down are `Ctrl` + `Shift` + `M` on Windows computers and `Command` + `Shift` + M on Mac. 
+
+```{r}
+new_data <- data |> a + b
+```
+For example, in this code the data is being renamed to new_data "and then" that new code is a + b.
+
+### Ways to clean up a dataset
+
+Using filter() can help you only look at specific responses for rows in the data. This can help you look at specific variables you are analyzing.
+
+```{r}
+Coffee <- Starbucks_data |> filter(Beverage_category == "Coffee")
+Coffee
+```
+
+Using select() can help look at specific columns.
+
+```{r}
+Beverages <- Starbucks_data |> select(Beverage_category)
+Beverages
+```
+
+You can also summarize all of the responses from a given category in a dataset. Use group_by() to chose the groups of variable you want to get values from. Then use summarize() to get the summary of all the data from a different variable.
+
+```{r}
+New_data <- Starbucks_data |> 
+  group_by(Beverage_category) |> 
+  summarize(
+    sugar_mean = mean(Calories, na.rm = TRUE)
+  )
+New_data
+```
+
 ## Plotting, the fanciest things you can do with R
 
 R comes with some simple (and fake) datasets which live implicitly in the R environment. Here, let's use one of them, `mtcars`, to demonstrate graphing.
@@ -400,17 +445,12 @@ d |> mutate(cyl = factor(cyl)) |>
 
 ```
 
-### How to load a dataset
-Oftentimes you will have to load data from a dataset that is given to you. To do this you'll have to make sure the package `tidyverse` is installed. 
-```{r}
-library(tidyverse)
-Starbucks_data <- read.csv("tutorials/Starbucks.csv")
-```
+
 
 ### How to save your work and upload to GitHub?
+For Macs hold down control + S for PC hold down ctrl Alt S to save your code. Then click the Git panel and check the box next to the file listed. Once the box is checked click the Commit button (at the top of the screen). Then type in a commit message in the box. After that click the commit button in the right of the screen. Then hit the close button in the upper right hand corner. Finally click the push button next to the green arrow to uppload to Github.
 
-
-### Common errors
+### Common errors 
 Why isn't my R object appearing?
 Sometimes you have to call the r object again for you to be able to view it's outcome.
 For example x <- data 
