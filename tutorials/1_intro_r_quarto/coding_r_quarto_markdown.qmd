@@ -403,8 +403,11 @@ d |> mutate(cyl = factor(cyl)) |>
 ### How to load a dataset
 Oftentimes you will have to load data from a dataset that is given to you. To do this you'll have to make sure the package `tidyverse` is installed. 
 ```{r}
-storms <- read.csv(tutorials/Starbucks.csv)
+library(tidyverse)
+Starbucks_data <- read.csv("tutorials/Starbucks.csv")
 ```
+
+### How to save your work and upload to GitHub?
 
 
 ### Common errors
@@ -412,4 +415,7 @@ Why isn't my R object appearing?
 Sometimes you have to call the r object again for you to be able to view it's outcome.
 For example x <- data 
             x
+What should be my first step when I get an error message?
+1) Make sure there are no typos in your code. Look at where the spaces, commas, quotes, and parenthesis are. 2) Make sure your code is in the correct order. 3) Press the Run all code above button.
+
 
