@@ -1,0 +1,24 @@
+---
+title: "Example Data Analysis Using the Standard Workflow"
+author: "LiChen Dong"
+date: "`r lubridate::today()`"
+format: 
+  html: 
+    embed-resources: true
+    toc: true 
+    toc_depth: 4
+editor_options: 
+  chunk_output_type: console
+---
+
+
+# Setup
+
+```{r}
+#| output: false # This tells R not to print the output of this code chunk
+
+options(conflicts.policy = "depends.ok")
+library(tidyverse)
+
+path_data <- "g_e_study_2024/data"
+```
